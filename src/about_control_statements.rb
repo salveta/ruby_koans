@@ -19,6 +19,17 @@ class AboutControlStatements < Neo::Koan
     assert_equal __(:true_value), result
   end
 
+  def test_if_with_numbers
+    a = 3
+    b = 5
+    if a != b
+      result = "Yes, you are the best"
+    else
+      result = "Be calm my friend try again"
+    end
+    assert_equal __("Yes, you are the best"), result
+  end
+
   def test_if_statements_return_values
     value = if true
               :true_value
@@ -44,6 +55,7 @@ class AboutControlStatements < Neo::Koan
             end
     assert_equal __(nil), value
   end
+ 
 
   def test_condition_operators
     assert_equal __(:true_value), (true ? :true_value : :false_value)
@@ -131,12 +143,29 @@ class AboutControlStatements < Neo::Koan
     assert_equal [__("FISH"), __("AND"), __("CHIPS")], result
   end
 
+  def test_for_statement_with_numbers
+    for i in (1..5)
+      if i == 4
+        next
+  end
+  assert_equal __, result
+
+
   def test_times_statement
     sum = 0
     10.times do
       sum += 1
     end
     assert_equal __(10), sum
+  end
+
+  def test_for_statement_numbers 
+    sum = 0
+    for i in (1..5)
+      next if i == 2
+      sum += i
+    end
+    assert_equal __(13), sum
   end
 
 end
